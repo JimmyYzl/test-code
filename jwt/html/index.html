@@ -13,9 +13,10 @@
     <input type="password" class="password" placeholder="密码">
     <button class="btn">提交</button>
   </div>
+  <button class="jiexi">携带</button>
 </body>
 <script>
-  
+  var token;
   $('.btn').click(function () {
     const username = $('.username').val();
 
@@ -26,6 +27,7 @@
       type: "POST",
       success (data) {
         console.log(data);
+        token = data.token;
       },
       error (e) {
         console.log(e);
@@ -33,6 +35,17 @@
 
     })
   });
+
+  $('.jiexi').click(function() {
+    $.ajax({
+      url: "/api/jiema",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " +  token},
+      type: "GET",
+      success (data) {
+        console.log(data);
+      }
+    })
+  })
 
 </script>
 </html>
