@@ -1,11 +1,25 @@
 const jwt = require('jsonwebtoken');
 const express = require('express');
 const bodyParser = require('body-parser');
+const expressJWT = require('express-jwt');
 
 const app = express();
-const secretOrPrivateKey = "qweasdzxc";
+const secretOrPrivateKey = "Yzliang";
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressJWT({
+  secret: secretOrPrivateKey   
+}).unless({
+  path: ['/api/login', '/frontend/']  //除了这个地址，其他的URL都需要验证
+}));
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {   
+      //  这个需要根据自己的业务逻辑来处理（ 具体的err值 请看下面）
+    res.status(401).send(err);
+  }else{
+    next();
+  }
+});
 
 app.post('/api/login', (req, res) => {
   const body = req.body;
@@ -16,13 +30,7 @@ app.post('/api/login', (req, res) => {
 })
 
 app.get('/api/jiema', (req, res) => {
-  console.log(req.headers.authorization);
-  jwt.verify(token, secret, function (err, decoded) {
-    if (!err){
-          console.log(decoded.name);  //会输出123，如果过了60秒，则有错误。
-          res.json();
-     }
-})
+  res.json({"status": "ok", "user": req.user});
 })
 
 app.use('/frontend', express.static('./html'));
