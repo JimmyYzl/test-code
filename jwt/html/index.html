@@ -39,7 +39,7 @@
   $('.jiexi').click(function() {
     $.ajax({
       url: "/api/jiema",
-      headers: { "Content-Type": "application/json", "Authorization": "Bearer " +  token},
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " +  token+'1'},
       type: "GET",
       success (data) {
         console.log(data);
