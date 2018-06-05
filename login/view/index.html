@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    <input type="text" class="username" placeholder="账号">
+    <input type="password" class="password" placeholder="密码">
+    <input type="radio" name="sex" id="sex" value="0">男
+    <input type="radio" name="sex" id="sex" value="1">女
+    <button class="btn">注册</button>
+  </div>
+</body>
+<script>
+  var token;
+  $('.btn').click(function () {
+    const username = $('.username').val();
+
+    const password = $('.password').val();
+    const sex = $('#sex:checked').val();
+    $.ajax({
+      url: '/api/register',
+      data: {"username": username, "password": password, "sex": sex, date: (new Date()).getTime()},
+      type: "POST",
+      success (data) {
+        console.log(data);
+      },
+      error (e) {
+        console.log(e);
+      }
+
+    })
+  });
+
+</script>
+</html>
