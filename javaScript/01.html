@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    h1{
+      height: 2000px;
+      background: #ccc;
+    }
+  </style>
+  <script>
+    window.onload = () => {
+      var node = document.createElement('p');
+      var textnode = document.createTextNode('你好');
+      node.appendChild(textnode)
+      document.querySelector('.tag1').appendChild(node);
+      var style = document.querySelector('.tag1').style.background = "#fff"
+      console.log(style);
+    }
+  </script>
+</head>
+<body>
+  <h1 class="tag1">0</h1>
+</body>
+</html>

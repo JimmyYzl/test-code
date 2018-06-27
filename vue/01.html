@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <p>数据绑定</p>
+    <p>{{msg}}</p>
+    <p>属性绑定</p>
+    <p v-bind:title="title">
+      悬停提示
+    </p>
+    <p>判断绑定</p>
+    <h1 v-if="flag">显示隐藏</h1>
+    <p>列表循环</p>
+    <ol>
+      <li v-for="item in num">{{item}}</li>
+    </ol>
+    <p>事件绑定</p>
+    <p>{{inputVal}}</p>
+    <input type="button"  value="逆转" v-on:click="reverseMessage">
+    <p>数据双向绑定</p>
+    <input type="text" v-model="inputVal">
+    <p>组件</p>
+    <ul>
+      <li-item></li-item>
+    </ul>
+    <p>组件父子传值</p>
+    <ol>
+      <li-code v-for="item in array" v-bind:item="item" v-bind:key="item"></li-code>
+    </ol>
+    <p>is</p>
+    <ul>
+      <div is="li-code" item="sss"></div>
+    </ul>
+  </div>
+</body>
+<script>
+  // 组件声明要在实例化之前
+  Vue.component('li-item', {
+    template: '<li>你好啊</li>'
+  });
+  Vue.component('li-code', {
+    props: ['item'],
+    template: "<li>{{item}}</li>"
+  });
+  var app = new Vue({
+    el: "#app",
+    data: {
+      msg: "Hello Vue",
+      title: "提示文字",
+      flag: true,
+      num: 10,
+      inputVal: "Hello Vue.js!",
+      array: ['a', 'b', 'c' ,'d', 'e']
+    },
+    methods: {
+      reverseMessage (){
+        this.inputVal = this.inputVal.split('').reverse().join('');
+      }
+    }
+  })
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="myCanvas" width="500" height="300" style="border: 1px solid #ccc;"></canvas>
+  <canvas id="myCanvas2" width="500" height="300" style="border: 1px solid #ccc;"></canvas>
+  <canvas id="myCanvas3" width="500" height="300" style="border: 1px solid #ccc;"></canvas>
+  <canvas id="myCanvas4" width="500" height="300" style="border: 1px solid #ccc;"></canvas>
+  <canvas id="myCanvas5" width="500" height="300" style="border: 1px solid #ccc;"></canvas>
+  <img src="./20161015204638166.jpg" id="img" style="display: none">
+  <canvas id="myCanvas6" width="500" height="300" style="border: 1px solid #ccc;"></canvas>
+</body>
+<script>
+  var c = document.getElementById('myCanvas');
+  var ctx = c.getContext('2d');
+  ctx.fillStyle = "#ff0000";
+  // fillRect(x, y, width, height);
+  ctx.fillRect(100,100,150,75);
+</script>
+
+<script>
+  var c = document.getElementById('myCanvas2');
+  var ctx = c.getContext('2d');
+  ctx.moveTo(0,0);
+  ctx.lineTo(500, 300);
+  ctx.moveTo(0, 300);
+  ctx.lineTo(500, 0);
+  ctx.stroke();
+</script>
+
+<script>
+  var c = document.getElementById('myCanvas3');
+  var ctx = c.getContext('2d');
+  ctx.beginPath();
+  // C= 2πr
+  ctx.arc(250, 150, 50, 0, 2*Math.PI);
+  ctx.stroke();
+</script>
+
+<script>
+  var c = document.getElementById('myCanvas4');
+  var ctx = c.getContext('2d');
+  ctx.font = "30px Arial";
+  ctx.fillText("Hello World", 100, 50);
+  ctx.strokeText("Hello Canvas", 100, 200);
+</script>
+
+<script>
+  var c = document.getElementById('myCanvas5');
+  var ctx = c.getContext('2d');
+
+  var grd = ctx.createLinearGradient(0, 0, 200, 0);
+  grd.addColorStop(0, "red");
+  grd.addColorStop(1, "white");
+
+  ctx.fillStyle = grd;
+  ctx.fillRect(10,10,150,80);
+</script>
+
+<script>
+  var c = document.getElementById('myCanvas6');
+  var ctx = c.getContext('2d');
+  var img = document.getElementById('img');
+  img.onload = function(){
+    ctx.drawImage(img,10,10,150,180);
+}
+</script>
+</html>
