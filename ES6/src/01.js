@@ -1,28 +1,9 @@
-const {Scene, Sprite} = spritejs
+let [a, b, c] = [100, 200, 300];
+console.log(a+b+c);
 
-const scene = new Scene('#demo-quickStart', {
-  viewport: ['auto', 'auto'],
-  resolution: [3080, 800],
-})
+let {ll} = {ll: "add"};
+console.log(ll);
 
-const layer = scene.layer()
-
-const robot = new Sprite('https://p5.ssl.qhimg.com/t01c33383c0e168c3c4.png')
-
-robot.attr({
-  anchor: [0, 0.5],
-  pos: [0, 0],
-})
-
-robot.animate([
-  {pos: [0, 0]},
-  {pos: [0, 300]},
-  {pos: [2700, 300]},
-  {pos: [2700, 0]},
-], {
-  duration: 5000,
-  iterations: Infinity,
-  direction: 'alternate',
-})
-
-layer.append(robot)
+let vv;
+({vv} = {dd: "jkdla"});
+console.log(vv);

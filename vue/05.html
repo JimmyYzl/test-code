@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>directive</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-checkcolor="color">{{a}}</div>
+  </div>
+</body>
+<script>
+  Vue.directive("checkcolor", (el, binding, vnode) => {
+    el.style = "color:" + binding.value;
+  });
+  new Vue({
+    el: "#app",
+    data: {
+      a: "Hello World!",
+      color:'green'
+    },
+    
+    created () {
+      // setInterval(()=>{
+      //   this.color = this.haveColor();
+      // }, 1000)
+    },
+
+    methods: {
+      haveColor() {
+        const colorList = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+        let color = '';
+        for(var i=0;i<6;i++){
+          color += colorList[parseInt(Math.random()*16, 10)]
+        }
+        return '#' + color;
+      }
+    }
+  })
+</script>
+</html>
