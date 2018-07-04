@@ -1,0 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.hello {
+  color: brown;
+  background-image: url('./20161015204638166.jpg')
+}

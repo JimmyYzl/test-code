@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.bootcss.com/downloadjs/1.4.7/download.js"></script>
+</head>
+
+<body>
+	<button class="dd">下载</button>
+</body>
+<script>
+	$('.dd')
+		.click(function() {
+			let url = "http://192.168.1.123:8080/dist/item/export/stream/";
+			let item_ids = "3036147,3034767,3024945,3034766,3036146,3021600,3022199,3027150,3035108,3035096";
+
+			axios.get(url, {
+				params: {
+					"item_ids": item_ids
+				},
+				responseType: "blob"
+			})
+			.then(function (response) {
+				download(response.data, "淘汰商品明细.xlsx")
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		})
+
+</script>
+
+</html>
